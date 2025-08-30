@@ -5,6 +5,8 @@ import requests
 import datetime
 
 # ========== 邮箱配置 ==========
+SMTP_SERVER = "smtp.qq.com"   # 如果用QQ邮箱改成 smtp.qq.com
+SMTP_PORT = 587
 import os
 
 SENDER_EMAIL = os.getenv("EMAIL_USER")
@@ -97,4 +99,5 @@ if __name__ == "__main__":
     data = get_data()
     report = generate_report(data)
     send_email(report)
+
 
