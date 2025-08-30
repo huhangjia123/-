@@ -5,11 +5,12 @@ import requests
 import datetime
 
 # ========== 邮箱配置 ==========
-SMTP_SERVER = "smtp.gmail.com"   # 如果用QQ邮箱改成 smtp.qq.com
-SMTP_PORT = 587
-SENDER_EMAIL = "your_email@gmail.com"   # 你的邮箱
-SENDER_PASSWORD = "your_email_password" # 邮箱授权码/密码
-RECEIVER_EMAIL = "receiver_email@example.com"  # 接收者邮箱
+import os
+
+SENDER_EMAIL = os.getenv("EMAIL_USER")
+SENDER_PASSWORD = os.getenv("EMAIL_PASS")
+RECEIVER_EMAIL = os.getenv("EMAIL_RECEIVER")
+
 
 # ========== 获取数据函数（示例API，可换成更稳定的数据源） ==========
 def get_data():
@@ -96,3 +97,4 @@ if __name__ == "__main__":
     data = get_data()
     report = generate_report(data)
     send_email(report)
+
